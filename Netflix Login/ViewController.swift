@@ -135,8 +135,21 @@ class ViewController: UIViewController {
         }
         
         if emailErrorLabel.text == "OK", passwordErrorLabel.text == "OK", referralCodeErrorLabel.text == "OK" {
-        performSegue(withIdentifier: "toSignedUp", sender: self)
+            
+            let alert = UIAlertController(title: "회원가입", message: "완료되었습니다!", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "승인", style: .default, handler: { action -> Void in
+                self.performSegue(withIdentifier: "toSignedUp", sender: self)
+                
+            }))
+            
+            present(alert, animated: true)
         }
+    }
+    
+    @IBAction func unwindTransitionFirstVC(jackSegue: UIStoryboardSegue) {
+        
     }
     
 }
